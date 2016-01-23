@@ -10,4 +10,4 @@ Here, T-object refers to any object in touristic event or touristic place.
 
 ## Databases
 - [tourinsoft](http://api-doc.tourinsoft.com/#/home)
-- [map weather]()   TODO: put a link here
+- [map weather](http://openweathermap.org/)
