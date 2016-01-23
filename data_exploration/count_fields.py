@@ -1,5 +1,4 @@
 import requests
-import json
 from collections import Counter
 
 """
@@ -30,19 +29,6 @@ def request(collection, parameters={}, metadata=True, event=True):
 events = request('Objects')
 places = request('Objects', event=False)
 
-# keys = []
-
-# with open('field_list.txt') as f:
-#     for line in f:
-#         x = line.split('\t')[0]
-#         keys.append(x)
-
-# keys[0] = keys[0].lstrip('\ufeff')
-
-f = []
-
-for item in events:
-    f.append([field for field in item])
 
 def gendata(events):
     for tobject in events:
@@ -52,6 +38,7 @@ def gendata(events):
                     yield key + '.' + subkey
             else:
                 yield key
+
 
 def count_values(events):
     from collections import defaultdict
@@ -66,21 +53,6 @@ def count_values(events):
     return c
 
 c = Counter(gendata(events))
-d = count_values(events)
-print(c)
-print(d)
+d = Counter(gendata(places))
 
-
-# {champs: COunter(values)}
-
-    # for key in count:
-    #     count[keys] = (0, 0)
-
-# for item in events:
-#     storeItems[]
-#     while (type(item) is not str):
-#         item
-#     if (type(item) is str):
-#         count[item][0]
-#     else
-
+print(c + d)
