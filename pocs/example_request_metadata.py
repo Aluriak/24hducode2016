@@ -25,7 +25,7 @@ def request(collection, parameters={}, metadata=True, event=True):
                          ''.join(param_str),
                          '&metadata' if metadata else ''))
     print(url)
-    return requests.get(url).json()
+    return requests.get(url).json()['values']
 
 test = request('Objects')
-json.dump(test, open('test.json', 'w'))
+# json.dump(test, open('test.json', 'w'))
