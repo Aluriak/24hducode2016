@@ -23,7 +23,7 @@ def request(collection='Objects', parameters=dict(), metadata=True,
         - metadata: boolean to get metadata instead of values
           (doesn't seem to matter in practice)
         - event: search in events DB (if False, will search in places DB)
-    Output: a list of dictionaries (one dictionary for one object) containing
+    Output: a tuple of dictionaries (one dictionary for one object) containing
     the properties of each object.
     """
     param_str = ('&' + par + '=' + parameters[par] for par in parameters)
@@ -35,7 +35,7 @@ def request(collection='Objects', parameters=dict(), metadata=True,
     # Values field contains a list of all objects (other fields are useless)
     # Flatten dictionary formats nested dictionaries (see module parser)
     jsonOutput = requests.get(url).json()['value']
-    return([flatten_dictionary(tobject) for tobject in jsonOutput])
+    return tuple(flatten_dictionary(tobject) for tobject in jsonOutput)
 
 # Usage example
 # test = request()
