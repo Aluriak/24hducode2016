@@ -14,13 +14,13 @@ from .default import SUBMODULES_SOURCES_PREFIX
 from .source  import Source
 
 from .source_tourinsoft import SourceTourinsoft
-from .source_sourceweaver import SourceWeather
+from .source_weather import SourceWeather
 
 
 def all_sources():
     return (
         SourceTourinsoft(),
-        SourceWeaver(),
+        SourceWeather(),
     )
 
 # def source_class_check(cls):
