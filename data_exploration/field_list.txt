@@ -1,0 +1,44 @@
+﻿Acces	- Important : dans tout le flux, les champs sont séparés par 2 pipes "||" et les occurrences sont séparées par 2 dièses "##" - Situation de l'offre par rapport aux principaux points d'accès - 3 champs : Point d’accès||Nom||distance - Point d'accès choisi dans une liste déroulante - Nom : champ texte libre - distance exprimée en km (0 = sur place) - 0,n occurrences - Ex : Gare||Laval||30##Autoroute||A11||20
+Adresse1	- Porte ou escalier - 1 champ texte libre - 0,1 occurrence
+Adresse1Suite	- Bat ou res ou zone activité - 1 champ texte libre - 0,1 occurrence
+Adresse2	- Adresse principale - 1 champ texte libre - n° répétiteur,type,nom de voie - Ex :2 bis rue du Château - 0,1 occurrence
+Adresse3	- BP ou lieu dit - 1 champ texte libre - 0,1 occurrence
+Categorie	- Catégorie de la FMA Ex : festival ou manifestation sportive 0,1 occurrence
+Cedex	- Cedex de l'adresse postale - Champ texte libre - 0,1 occurrence
+CodeInseeCommune	- Code Insee de la Commune - champ alimenté automatiquement au moment du choix de la commune -
+CodePostal	- Code postal de la commune champ alimenté automatiquement au moment du choix de la commune - 1,1 occurrence
+CommFax	- Numéro(s) de fax - 0,n occurrences séparées par 2 dièses "##"
+CommMail	- Adresse(s) e-Mail - 0,n occurrences séparées par 2 dièses "##"
+CommMob	- Numéro(s) de téléphone mobile - 0,n occurrences séparées par 2 dièses "##"
+CommTel	- Numéro(s) de tel fixe - 0,n occurrences séparées par 2 dièses "##"
+Commune	- Nom de la commune - 1 champ texte choisi dans une liste déroulante - 1,1 occurrence
+CommWeb	- Url(s) de site web 0,n occurrences séparées par 2 dièses "##"
+LabelTourismeHandicap	- Champ commun à tous bordereaux - Label tourisme et handicap : type(s) de déficience labellisé(s) - champ(s) texte choisi(s) parmi des cases à cocher - 0,n occurrences séparées par 2 dièses "##" - Ex : Auditive##mentale##moteur##visuelle
+ModePaiement	- Mode(s) de paiement accepté(s) - champ(s) texte choisi(s) parmi des cases à cocher - 0,n occurrences séparées par 2 dièses "##" - Ex : cartes bancaires##chèques bancaires##etc...
+NomOffre	- Nom de l'offre touristique - Champ texte normalement obligatoire - 1,1 occurrence
+OuvertureGranule	- Attention spécifique pour les FMA [Date début]||[Date fin]||[Horaire de début]||[Horaire de fin]||[Précisions ouverture]||[Précisions fermeture] 0,n occurrences séparées par 2 dièses "##" - Aucun champ n'est obligatoire
+Periodicite	- Périodicité de la manifestation 0,1 occurrence Ex : annuel,mensuel,...
+PeriodicitePrecisions	- Précision sur la périodicité champ texte 0,1 occurrence
+plateformeURL	- Présence sur plateforme(s) communautaire(s) - 2 champs texte : Type de plateforme||url - Type de plateforme choisi dans une liste déroulante - 0,n occurrences séparées par 2 dièses "##" - Ex : Facebook||http://url1.com##Flickr||http://url2.com
+ResaDirecte	- Moyen(s) de réservation directe - 3 champs texte : Nom du contact||Tel contact||mail contact - 0,n occurrences séparées par 2 dièses "##"
+ResaEnLigne	- Moyen(s) de réservation en ligne - 5 champs texte : Nom centrale resa||url resa en ligne||url disponibilités||tel centrale resa||mail centrale resa - 0,n occurrences séparées par 2 dièses "##"
+ResaEnLigneOuiNon	- L'offre touristique dispose-t-elle d'une réservation en ligne ? - champ oui/non - 1,1 occurrence
+SP-Accessibilite	- L'offre touristique a-t-elle le label Tourisme et handicap pour au moins une déficience ? champ oui/non - 1,1 occurrence
+SP-BureauDistributeur	- Bureau distributeur de l'adresse postale 0,1 occurrence
+SP-VideosEmbed	- Code Embed pour intégrer une(des) video(s) - 1 champ texte libre - 0,n occurrences séparées par 2 dièses "##"
+TarifGratuit	- Le tarif est-il gratuit ? - Champ oui/non - 0,1 occurrence
+Tarifs	- Tarif(s) de l'année en cours proposé(s) - 4 champs - Intitulé tarif||min tarif année en cours||max tarif année en cours||Précisions tarif - Intitulé tarif choisi dans une liste déroulante - 0,n occurrences séparées par 2 dièses "##"
+TripAdWidget	- widget tripadvisor - champ texte libre - 0,n occurrences séparées par 2 dièses "##"
+VideosUrl	- url(s) pour accéder à la ou aux video(s) - champ texte libre - 0,n occurrences séparées par 2 dièses "##"
+VisiteDureeMoyenne	- Durée de visite pour les individuels - Champ texte libre sur 5 caractères - 0,1 occurrence
+VisiteDureeMoyenneGroupe	- Durée de visite pour les groupes - Champ texte libre sur 5 caractères - 0,1 occurrence
+VisiteGroupeGuideeEnPermanence	- Une visite guidée est-elle proposée aux groupes en permanence ? - champ oui/non - 0,1 occurrence
+VisiteGroupeGuideeSurDemande	- Une visite guidée est-elle proposée aux groupes sur demande ? - champ oui/non - 0,1 occurrence
+VisiteGroupeLibreEnPermanence	- La visite libre est-elle proposée aux groupes en permanence ? - champ oui/non - 0,1 occurrence
+VisiteGroupePedagogiqueEnPermanence	- Une visite pédagogique est-elle proposée aux groupes en permanence ? - champ oui/non - 0,1 occurrence
+VisiteGuideeEnPermanence	- Une visite guidée est-elle proposée aux individuels en permanence ? - champ oui/non - 0,1 occurrence
+VisiteGuideeSurDemande	- Une visite guidée est-elle proposée aux individuels sur demande ? - champ oui/non - 0,1 occurrence
+VisiteLanguesAudio	- Langue(s) des visites audio - champ(s) texte choisi(s) parmi des cases à cocher - 0,n occurrences séparées par 2 dièses "##" Ex : Anglais##Allemand##etc...
+VisiteLanguesParlées	- Langue(s) parlée(s) pendant les visites - champ texte choisi parmi des cases à cocher - 0,n occurrences séparées par 2 dièses "##" Ex : Anglais##Allemand##etc...
+VisiteLibreEnPermanence	- La visite libre est-elle proposée aux individuels en permanence ? - champ oui/non - 0,1 occurrence
+Zone	-

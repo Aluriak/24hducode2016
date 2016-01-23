@@ -1,5 +1,4 @@
 import requests
-import json
 
 """
 Example of request function to be used on tourinsoft API
@@ -26,6 +25,3 @@ def request(collection, parameters={}, metadata=True, event=True):
                          '&metadata' if metadata else ''))
     print(url)
     return requests.get(url).json()['values']
-
-test = request('Objects')
-# json.dump(test, open('test.json', 'w'))
