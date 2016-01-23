@@ -13,7 +13,7 @@ import requests
 #############
 # FUNCTIONS #
 #############
-def actual_weather(latitude, longitude):
+def actual(latitude, longitude):
     """
     Return the weather at the location indicate at latitude/longitude.
     Return a dictionnary.
@@ -36,7 +36,7 @@ def actual_weather(latitude, longitude):
 
     return weather
 
-def predicted_weather(latitude, longitude):
+def predicted(latitude, longitude):
     """
     Return the predicted weather for the next 5 days.
     """
@@ -56,7 +56,6 @@ def predicted_weather(latitude, longitude):
                 'humidity (%)': day['main']['humidity'],
                 "wind (km/h)": round(mps_to_kmph(day['wind']["speed"]),2),
                 "temperature (°C)": round(kelvin_to_celsius(day['main']['temp']),2)}
-
     return predicted_weather
 
 
@@ -72,12 +71,11 @@ def mps_to_kmph(mps):
     """
     return mps*3.6
 
-def is_predictable(year, month, day):
+def is_predictable(request):
     """
     Check if at the date, the weather can be predict.
     Output: boolean
     """
-    request = datetime.date(year, month, day)
     today = datetime.date.today()
     if request.toordinal() - today.toordinal() >= 5:
         return True
@@ -85,4 +83,4 @@ def is_predictable(year, month, day):
         return False
 
 
-predicted_weather(46.5798114,0.34189)
+#predicted(46.5798114,0.34189)
