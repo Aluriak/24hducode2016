@@ -20,5 +20,5 @@ def flatten_dictionary(dictionary):
     return(flattenedDictionary)
 
 
-test = flatten_dictionary({"a": 1, "b": {"c": 1, "d": 2}})
-print(test)
+# Usage example
+# test = flatten_dictionary({"a": 1, "b": {"c": 1, "d": 2}})
