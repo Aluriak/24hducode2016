@@ -1,0 +1,13 @@
+# Module doc
+
+## Engine data management
+Here, T-object refers to any object in touristic event or touristic place.
+
+
+## Engine goals
+- [ ] input: one T-object, int N  ; output: all event/place close from input T-object (at most N kilometer)
+
+
+## Databases
+- [tourinsoft](http://api-doc.tourinsoft.com/#/home)
+- [map weather](http://openweathermap.org/)
