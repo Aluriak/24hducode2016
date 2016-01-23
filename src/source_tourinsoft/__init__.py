@@ -1,5 +1,5 @@
 from .getDataFromTourinSoft import request
-from .SourceTourinsoft import SourceTourinsoft
+from .source_tourinsoft import SourceTourinsoft
 
 
 
