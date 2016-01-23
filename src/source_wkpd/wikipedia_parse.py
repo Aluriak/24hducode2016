@@ -62,7 +62,7 @@ def get_wikipedia_article_info(article_title, sentences=4):
     :type arg1: <str>
     :type arg2: <int>
     :return: dict of new elements with keys : 
-        FIELD_NAME, FIELD_COORDINATES, DESCRIPTION, URL
+        FIELD_NAME, FIELD_COORDINATES, FIELD_DESCRIPTION, URL
     :rtype: <dict>
 
     """
@@ -98,9 +98,9 @@ def get_wikipedia_article_info(article_title, sentences=4):
         article_attributes[FIELD_COORDINATES]  = round_this_now(page.coordinates)
     except:
         pass
-    article_attributes[DESCRIPTION] = wikipedia.summary(article_title,
+    article_attributes[FIELD_DESCRIPTION] = wikipedia.summary(article_title,
                                                           sentences=sentences)
-    article_attributes[URL] = get_wikipedia_url_with_pageid(page.pageid)
+    article_attributes[FIELD_URL] = get_wikipedia_url_with_pageid(page.pageid)
     article_attributes[FIELD_NAME] = article_title
 
 #    print("coords:", page.coordinates)
@@ -118,7 +118,7 @@ def get_wikipedia_url_with_pageid(pageid):
 
     :param: pageid from wikipedia API
     :type: <str>
-    :return: Return URL or ""
+    :return: Return FIELD_URL or ""
     :rtype: <str>
     """
 

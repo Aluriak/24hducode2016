@@ -16,5 +16,7 @@ FIELD_FREE = 'Free'  # Boolean to know if it's free
 # Distinguish between an Event and a Place
 FIELD_EVENT = 'Event'  # Boolean True if Event, False if Place
 
-DESCRIPTION = 'description'
-URL = 'url'
+# Fields for Peter
+FIELD_DESCRIPTION = 'description'
+FIELD_URL = 'url'
+
