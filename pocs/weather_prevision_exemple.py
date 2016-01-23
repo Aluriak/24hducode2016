@@ -1,9 +1,6 @@
 import requests
 
 
-# FLAGS = 'format=json&metadata'
-FLAGS = 'format=json'
-
 latitude = "0.34189"
 longitude = "46.5798114"
 
