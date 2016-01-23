@@ -12,7 +12,7 @@ class SourceMock(Source):
         self.funny_message = funny_message
         self.funny_key     = funny_key
 
-    def enrichment(self, data_dict)
+    def enrichment(self, data_dict):
         data_dict[self.funny_key] = self.funny_message
         return data_dict
 
