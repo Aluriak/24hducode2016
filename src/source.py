@@ -21,8 +21,7 @@ class Source:
         assert isinstance(dict_data, dict)  # keep this line in subclasses
         return dict_data  # No modification by default
 
-    @staticmethod
-    def keywords():
+    def keywords(self):
         """Return a set of string, that are all possible keys addable by
         enrichment method
 
