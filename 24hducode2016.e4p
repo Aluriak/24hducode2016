@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project 24hducode2016 -->
-<!-- Saved: 2016-01-23, 13:37:06 -->
+<!-- Saved: 2016-01-23, 20:27:49 -->
 <!-- Copyright (C) 2016 ,  -->
 <Project version="5.1">
   <Language></Language>
@@ -12,6 +12,7 @@
   <Version>0.1</Version>
   <Author></Author>
   <Email></Email>
+  <Eol index="-1"/>
   <Sources>
     <Source>pocs/example_request_metadata.py</Source>
     <Source>pocs/example_utilisation_map.py</Source>
@@ -19,6 +20,23 @@
     <Source>pocs/test_doc_turinsoft.py</Source>
     <Source>src/__main__.py</Source>
     <Source>__init__.py</Source>
+    <Source>pocs/wikipedia_parse.py</Source>
+    <Source>pocs/weather_prevision_exemple.py</Source>
+    <Source>pocs/weather_python_lib_exemple.py</Source>
+    <Source>src/default.py</Source>
+    <Source>src/source.py</Source>
+    <Source>src/TObject.py</Source>
+    <Source>src/weather.py</Source>
+    <Source>data_exploration/count_fields.py</Source>
+    <Source>data_exploration/parse_field_list.py</Source>
+    <Source>src/api_usage/parser.py</Source>
+    <Source>src/api_usage/request.py</Source>
+    <Source>src/api_usage/__init__.py</Source>
+    <Source>src/source_mock/mock.py</Source>
+    <Source>src/source_mock/__init__.py</Source>
+    <Source>src/source_wkpd/wikipedia_parse.py</Source>
+    <Source>src/source_wkpd/wiki_source_obj.py</Source>
+    <Source>src/source_wkpd/__init__.py</Source>
   </Sources>
   <Forms/>
   <Translations/>

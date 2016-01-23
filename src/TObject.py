@@ -8,11 +8,8 @@ obtained from the json dictionary output of a request on this API
 
 class TObject:
 
-    FILTERED_OUT = set()  # Some keys are useless for us, we filter them out
-
     def __init__(self, data):
         self.values = data
-        assert data.__class__ is dict  # JSON output is a dict
 
     @staticmethod
     def filter_input(jsondict):
