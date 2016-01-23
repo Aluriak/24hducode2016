@@ -20,5 +20,3 @@ class TObjectFactory:
         for tobject in json_data:
             for source in self.sources:
                 source.enrichment(tobject)
-
-
