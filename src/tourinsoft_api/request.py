@@ -37,6 +37,5 @@ def request(collection='Objects', parameters=dict(), metadata=True,
     jsonOutput = requests.get(url).json()['value']
     return([flatten_dictionary(tobject) for tobject in jsonOutput])
 
-
-test = request()
-print(test[0])
+# Usage example
+# test = request()
