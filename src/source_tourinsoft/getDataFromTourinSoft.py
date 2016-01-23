@@ -1,16 +1,31 @@
-import requests
-from parser import flatten_dictionary
-
 """
 This module contains tools used to get data using tourinsoft's API.
 Request outputs JSON which is converted to a dictionary.
 """
+
+import requests
 
 URL = 'http://wcf.tourinsoft.com/Syndication/3.0/cdt72/'
 
 EVENT_URL = 'e9a8e2bf-c933-4831-9ebb-87eec559a21a/'
 
 PLACES_URL = '969e24f9-75a2-4cc6-a46c-db1f6ebbfe97/'
+
+
+def flatten_dictionary(dictionary):
+    """
+    Input: a request's JSON dictionary output with nested dictionary
+    Output: a flattened dictionary (format: key1.key2 = value2)
+    """
+    flattenedDictionary = dict()
+    for key, value in dictionary.items():
+        if isinstance(value, dict):
+            for subkey, subvalue in value.items():
+                flattenedDictionary[key + '.' + subkey] = subvalue
+        else:
+            flattenedDictionary[key] = value
+
+    return(flattenedDictionary)
 
 
 def request(collection='Objects', parameters=dict(), metadata=True,
