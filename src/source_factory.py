@@ -14,7 +14,7 @@ from .default import SUBMODULES_SOURCES_PREFIX
 from .source  import Source
 
 from .source_tourinsoft import SourceTourinsoft
-from .source_sourceweaver import SourceWeaver
+from .source_sourceweaver import SourceWeather
 
 
 def all_sources():
