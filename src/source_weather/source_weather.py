@@ -3,18 +3,26 @@ Definition of a source than add dumb data
 
 """
 from src.source import Source
+from . import weather
 
-class SourceMock(Source):
-    """Add a funny key with a funny value in the given dict"""
+class SourceWeaver(Source):
+    """
+    Throught Open Weather Map generates today weather and
+    expected weather for next days, if possible
 
-    def __init__(self, funny_message="Java.OutOfMemoryError"
-                 funny_key="Who's there ?"):
-        self.funny_message = funny_message
-        self.funny_key     = funny_key
+    """
 
     def enrichment(self, data_dict):
-        data_dict[self.funny_key] = self.funny_message
+        if default.FIELD_COORDINATES in data_dict:
+            lat, lon = data_dict[default.FIELD_COORDINATES]
+            data_dict[default.FIELD_WEATHER] = weather.actual(lat, lon)
+        if default.FIELD_DATE in data_dict:
+            date = data_dict[default.FIELD_DATE]
+            if weather.is_predictable(date):
+                data_dict[default.FIELD_WEATHER_PREDICTED] = weather.predicted(lat, lon)[str(default.FIELD_DATE)]
+
         return data_dict
 
     def keywords(self):
-        return {self.funny_key}
+        return {default.FIELD_WEATHER_PREDICTED,
+                default.FIELD_WEATHER}
