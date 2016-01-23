@@ -5,7 +5,7 @@ Definition of a source than add dumb data
 from src.source import Source
 from . import weather
 
-class SourceWeaver(Source):
+class SourceWeather(Source):
     """
     Throught Open Weather Map generates today weather and
     expected weather for next days, if possible
