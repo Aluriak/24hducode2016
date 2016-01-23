@@ -4,10 +4,10 @@ Gets data from the two databases Events and Places using tourinsoft's API
 Inherits from the SOURCE global class
 
 """
-from src.source import Source
+# from src.source import Source
 
 
-class SourceTourinsoft(Source):
+class SourceTourinsoft():
     """Add a key from tounrinsoft output dictionary and its value to a dict"""
 
     def __init__(self, value, key):
