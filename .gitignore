@@ -49,6 +49,7 @@ coverage.xml
 *.mo
 *.pot
 
+*.vim
 # Django stuff:
 *.log
 
