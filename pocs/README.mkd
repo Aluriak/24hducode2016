@@ -1,0 +1,4 @@
+# Proof of Concepts
+
+Put here all small codes that performs any interesting treatment.
+Please use an explicit and clear name for your file, and add docstring, in order to get a (quickly) reusable code.
