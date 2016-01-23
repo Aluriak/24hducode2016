@@ -3,6 +3,13 @@ Definitions of default values.
 
 """
 
+
+# CONSTANTS
+SUBMODULES_SOURCES_PREFIX = 'sources_'
+
+
+# FIELDS OF TOBJECTS
+
 # Following fields are found in Events and Places
 FIELD_NAME = 'ObjectName'  # String
 FIELD_TYPE = 'Type'  # String
