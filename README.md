@@ -5,3 +5,4 @@ Membres de l'équipe :
 - lucas
 - David
 - Romain
+- Pierre
