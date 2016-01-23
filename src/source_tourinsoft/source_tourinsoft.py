@@ -8,11 +8,6 @@ Inherits from the SOURCE global class
 
 
 class SourceTourinsoft():
-    """Add a key from tounrinsoft output dictionary and its value to a dict"""
-
-    def __init__(self, value, key):
-        self.value = value
-        self.key = key
 
     def enrichment(self, data_dict):
         data_dict[self.key] = self.value
