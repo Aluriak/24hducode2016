@@ -6,6 +6,7 @@ Definitions of default values.
 
 # CONSTANTS
 SUBMODULES_SOURCES_PREFIX = 'sources_'
+ALL_DATA_FILE = 'ressources/tobjects.pkl'
 
 
 # FIELDS OF TOBJECTS
