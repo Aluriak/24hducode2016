@@ -1,10 +1,21 @@
+"""
+This modules parses the 'OuvertureGranule' time table into an object
+Returns a list of time periods containing the opening times for each day of
+the week. Time periods are custom objects.
+"""
+
 import datetime
 import re
 
+# Regex describing one time period (start || end || days information)
 r = re.compile(r'(\d\d/\d\d/\d\d\d\d)\|\|(\d\d/\d\d/\d\d\d\d)\|\|\|\|\|\|(.+)')
 
 
 class timePeriod():
+    """
+    Class storing a time period.
+    Attributes : look below it's easy
+    """
 
     def __init__(self, period, times):
 
@@ -29,15 +40,21 @@ class timePeriod():
 
 
 class TimeTableParser():
+    """
+    Class parsing shitty input from granule into a list of time periods
+    """
 
     @staticmethod
     def parseRawTimeTable(timeTable):
         timePeriods = []
         openingTimes = []
+        # Separates time periods
         splitPeriods = (x for x in timeTable.split('##'))
+        # Parse each time period
         for period in splitPeriods:
-            temp = re.search(r, period)
+            temp = re.search(r, period)  # Regex see top of file
             timePeriods.append((temp.group(1), temp.group(2)))
+            # Days separated by ||
             openingTimes.append(temp.group(3).split('||'))
 
         return([timePeriods, openingTimes])
