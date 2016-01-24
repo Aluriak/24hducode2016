@@ -14,7 +14,7 @@ tls.set_credentials_file(username='ducktypers', api_key='fd81wnx3lh')
 ########
 
 
-def draw_map(lon, lat, text, number, titre='NO TITLE'):
+def draw_map(lon, lat, text, titre='NO TITLE'):
     """
     Take 3 list as input, and the title of the map.
     """
@@ -28,7 +28,7 @@ def draw_map(lon, lat, text, number, titre='NO TITLE'):
         'text': text,
         'mode': 'markers',
         'marker': dict(
-            size = 8 * number,
+            size = 8,
             opacity = 0.8,
             line = dict(width=1, color="rgb(102,102,102)")
         )

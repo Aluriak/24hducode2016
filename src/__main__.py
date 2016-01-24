@@ -122,7 +122,4 @@ for i, tobject in enumerate(gen_wanteds()):
     txt.save('/var/www/html/24h/tmp/result_' + str(i) + ".png", format="png")
 
 
-
-
-
 make_map.make_map(keepeds)
