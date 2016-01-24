@@ -5,7 +5,6 @@ Entry point for the project.
 import sys
 import pickle
 
-# 
 from . import default
 from . import tobject_factory
 from . import source_factory
