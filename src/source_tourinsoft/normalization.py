@@ -15,6 +15,8 @@ from src import default
 TOURINFO_DATE_FORMAT = '%Y-%m-%dT%H:%M:%S'
 def date_type_wrapped(string, format):
     """Wrapper around datetime, allowing usage of keywords arguments"""
+    if '.' in string:
+        string = string.split('.')[0]
     return datetime.strptime(string, format)
 date_type = partial(date_type_wrapped, format=TOURINFO_DATE_FORMAT)
 
@@ -38,11 +40,12 @@ def normalized_keys(data_dict, isevent):
     """Return a data_dict, equivalent to given one, but with normalized
     keys and values"""
     norm_data = {default.FIELD_EVENT: bool(isevent)}
-    # common data
     for unkey, (normkey, type_conv) in KEYS_ASSOCIATION.items():
-        print('LOOP:', unkey, (normkey, type_conv))
-        if unkey in data_dict:
-            print('INLOOP:', type_conv, data_dict[unkey])
-            print('INLOOP:', type_conv(data_dict[unkey]))
-            norm_data[normkey] = type_conv(data_dict[unkey])
+        # print('LOOP:', unkey, (normkey, type_conv))
+        value = data_dict.get(unkey, None)
+        if value:
+            # print('INLOOP:', type_conv, data_dict[unkey])
+            # print('INLOOP:', type_conv(data_dict[unkey]))
+            norm_data[normkey] = type_conv(value)
+            print(norm_data[normkey])
     return norm_data
