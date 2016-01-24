@@ -13,6 +13,8 @@ import sys
 import pickle
 from docopt import docopt
 from collections import namedtuple
+from src.visualisation.distance import distance_gps
+from PIL import Image, ImageDraw, ImageFont # pip install pillow
 
 from . import default
 from . import tobject_factory
@@ -52,11 +54,15 @@ def gen_tobjects():
 # User definition
 Position = namedtuple('User', ['latitude', 'longitude'])
 args = docopt(__doc__)
-user = Position(args['--latitude'], args['--longitude'])
-
+user = Position(float(args['--latitude']), float(args['--longitude']))
+if user.latitude is None:
+    user.latitude = -0.07
+if user.longitude is None:
+    user.latitude = 47.70
 
 # use tobjects here
 tobjects = gen_tobjects()
+<<<<<<< HEAD
 # from src.visualisation import format_types_data as fca
 # fca.lattice(tobjects)
 # print('##########################')
@@ -65,3 +71,51 @@ tobjects = gen_tobjects()
 l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
 
 make_map.make_map(l)
+=======
+
+def pretiffy(string, wordsize=12):
+    return ' '.join(
+        ('\n'+word) if idx % wordsize == 0 else word
+        for idx, word in enumerate(string.split())
+    )
+#print('##########################')
+#print(tobjects[0]['description'])
+for i, tobject in enumerate((o for o in tobjects if default.FIELD_LATITUDE in o)):
+    #print(tobject)
+    lat1, lon1 = tobject[default.FIELD_LATITUDE], tobject[default.FIELD_LONGITUDE]
+    if distance_gps((float(lon1), float(lat1)), (user.longitude, user.latitude)) < 10:
+#        print(tobject[default.FIELD_DESCRIPTION])
+        print('')
+#        print(tobject)
+
+        
+        # make a blank image for the text, initialized to transparent text color
+        # width, height
+        txt = Image.new('RGBA', (900, 300), (255,255,255,255))
+
+        # get a font
+        fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 15)
+        # get a drawing context
+        d = ImageDraw.Draw(txt)
+
+        # draw text, half opacity
+#        d.text((10,10), "Hello", font=fnt, fill=(255,255,255,128))
+        # draw text, full opacity
+        d.text((10,40), tobject['object_name'], font=fnt, fill=(0,0,0,255))
+        d.text((10,60), tobject['city'], font=fnt, fill=(0,0,0,255))
+        d.text((10,80), tobject['url'], font=fnt, fill=(0,0,0,255))
+        
+        
+        d.text((10,100), pretiffy(tobject['description']), font=fnt, fill=(0,0,0,255))
+#        d.text((10,120), tobject[''], font=fnt, fill=(0,0,0,255))
+        
+        txt.save('/var/www/html/24h/tmp/result_' + str(i) + ".png", format="png")
+        
+        
+
+
+# l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
+
+# make_map.make_map(l)
+
+>>>>>>> cddc6fcc42eb3fbf06cf440123e3f4953c635bd4

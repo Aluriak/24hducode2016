@@ -24,9 +24,11 @@ def get_wikipedia_data(thing):
 #
 #        results - the maxmimum number of results returned
 #        suggestion - if True, return results and suggestion (if any) in a tuple
-
-    return [get_wikipedia_article_info(article_title) for article_title 
-                in article_titles]
+    try:
+        return [get_wikipedia_article_info(article_title) for article_title 
+                    in article_titles]
+    except:
+        return list()
 
 
 def get_wikipedia_data_near_coords(latitude, longitude):
