@@ -16,11 +16,14 @@ class TObject:
     def __getitem__(self, key):
         if key not in self.data:
             for source in TObject.sources:
-                if key in source.keywords:
+                if key in source.keywords():
                     source.enrichment(self.data)
                 if key in self.data:
                     break
         return self.data[key]
+
+    def __contains__(self, item):
+        return item in self.data
 
     def __str__(self):
         return str(self.data)
