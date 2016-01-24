@@ -91,13 +91,22 @@ for i, tobject in enumerate((o for o in tobjects if default.FIELD_LATITUDE in o)
         # draw text, half opacity
 #        d.text((10,10), "Hello", font=fnt, fill=(255,255,255,128))
         # draw text, full opacity
-        d.text((10,40), tobject['object_name'], font=fnt, fill=(0,0,0,255))
-        d.text((10,60), tobject['city'], font=fnt, fill=(0,0,0,255))
-        d.text((10,80), tobject['url'], font=fnt, fill=(0,0,0,255))
-        
-        
-        d.text((10,100), pretiffy(tobject['description']), font=fnt, fill=(0,0,0,255))
-#        d.text((10,120), tobject[''], font=fnt, fill=(0,0,0,255))
+        try:
+            d.text((10,40), tobject['object_name'], font=fnt, fill=(0,0,0,255))
+        except:
+            pass
+        try:
+            d.text((10,60), tobject['city'], font=fnt, fill=(0,0,0,255))
+        except:
+            pass
+        try:
+            d.text((10,80), tobject['url'], font=fnt, fill=(0,0,0,255))
+        except:
+            pass
+        try:
+            d.text((10,100), pretiffy(tobject['description']), font=fnt, fill=(0,0,0,255))
+        except:
+            pass
         
         txt.save('/var/www/html/24h/tmp/result_' + str(i) + ".png", format="png")
         
