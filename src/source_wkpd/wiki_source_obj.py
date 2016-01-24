@@ -35,10 +35,14 @@ class WikiSource(Source):
         if FIELD_NAME in data_dict:
             
             # print("Processing:", FIELD_NAME)
-            payload = wkp.get_wikipedia_data(data_dict[FIELD_NAME])[0]
+            try:
+                payload = wkp.get_wikipedia_data(data_dict[FIELD_NAME])[0]
+                data_dict[FIELD_DESCRIPTION] = payload[FIELD_DESCRIPTION]
+                data_dict[FIELD_URL] = payload[FIELD_URL]
+            except IndexError:
+                data_dict[FIELD_DESCRIPTION] = None
+                data_dict[FIELD_URL] = None
             # print('PAYLOAD:', payload.__class__, payload)
-            data_dict[FIELD_DESCRIPTION] = payload[FIELD_DESCRIPTION]
-            data_dict[FIELD_URL] = payload[FIELD_URL]
 
             # [self.funny_keys.update(elem.keys()) for elem 
                 # in data_dict['linked_elems']]

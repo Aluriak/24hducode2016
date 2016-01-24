@@ -13,6 +13,7 @@ import sys
 import pickle
 from docopt import docopt
 from collections import namedtuple
+from src.visualisation.distance import distance_gps
 
 from . import default
 from . import tobject_factory
@@ -51,10 +52,19 @@ def gen_tobjects():
 # User definition
 Position = namedtuple('User', ['latitude', 'longitude'])
 args = docopt(__doc__)
-user = Position(args['--latitude'], args['--longitude'])
-
+user = Position(float(args['--latitude']), float(args['--longitude']))
+if user.latitude is None:
+    user.latitude = -0.07
+if user.longitude is None:
+    user.latitude = 47.70
 
 # use tobjects here
 tobjects = gen_tobjects()
 print('##########################')
 print(tobjects[0]['description'])
+for tobject in (o for o in tobjects if default.FIELD_LATITUDE in o):
+    #print(tobject)
+    lat1, lon1 = tobject[default.FIELD_LATITUDE], tobject[default.FIELD_LONGITUDE]
+    if distance_gps((float(lon1), float(lat1)), (user.longitude, user.latitude)) < 10:
+        tobject[default.FIELD_DESCRIPTION]
+        print(tobject)
