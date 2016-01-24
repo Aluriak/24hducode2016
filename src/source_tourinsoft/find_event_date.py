@@ -1,5 +1,10 @@
+"""
+Find dates associated with an event
+Input eventID
+Output tuple (Datedebut, Datefin) converted in the right format
+"""
+
 from request_data import request
-from src import default
 
 
 def findEventDate(eventID):
@@ -14,7 +19,3 @@ def findEventDate(eventID):
                 default.TOURINFO_DATE_FORMAT
              ))
             for event in searchResults)
-
-
-test = findEventDate('FMA072878000016')
-print(test)
