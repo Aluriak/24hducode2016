@@ -29,7 +29,7 @@ def actual(latitude, longitude):
     # web_data.json() -> dico
 
     weather = {}
-    weather["description"] = web_data['weather'][0]['description']
+    weather["description"] = web_data['weather'][0]['main']
     weather["humidity (%)"] = web_data['main']['humidity']
     weather["wind (km/h)"] = round(mps_to_kmph(web_data['wind']['speed']),2)
     weather["temperature (°C)"] = round(kelvin_to_celsius(web_data['main']['temp']),2)
@@ -52,7 +52,7 @@ def predicted(latitude, longitude):
     for day in web_data:
         if day['dt_txt'][-8:] == "15:00:00":
             predicted_weather[day['dt_txt'][:10]] = {
-                'description': day['weather'][0]['description'],
+                'description': day['weather'][0]['main'],
                 'humidity (%)': day['main']['humidity'],
                 "wind (km/h)": round(mps_to_kmph(day['wind']["speed"]),2),
                 "temperature (°C)": round(kelvin_to_celsius(day['main']['temp']),2)}
@@ -81,6 +81,5 @@ def is_predictable(request):
         return True
     else:
         return False
-
-
-#predicted(46.5798114,0.34189)
+    
+#actual(46.5798114,0.34189)
