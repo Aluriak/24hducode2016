@@ -57,9 +57,11 @@ user = Position(args['--latitude'], args['--longitude'])
 
 # use tobjects here
 tobjects = gen_tobjects()
+# from src.visualisation import format_types_data as fca
+# fca.lattice(tobjects)
 # print('##########################')
 # print(tobjects[0])
 # exit()
-# l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
+l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
 
-# make_map.make_map(l)
+make_map.make_map(l)
