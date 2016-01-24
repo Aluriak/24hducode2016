@@ -5,24 +5,24 @@ Automatic import of any source.Source subclass,
 in any subpackage with name beginning with 'source_'
 
 """
-import importlib
-import glob
-import os
+#import importlib
+#import glob
+#import os
 
-from .info    import PACKAGE_NAME, PACKAGE_VERSION
-from .default import SUBMODULES_SOURCES_PREFIX
-from .source  import Source
+#from .info    import PACKAGE_NAME, PACKAGE_VERSION
+#from .default import SUBMODULES_SOURCES_PREFIX
+#from .source  import Source
 
-# from .source_tourinsoft import SourceTourinsoft
+from .source_tourinsoft import SourceTourinsoft
 from .source_weather import SourceWeather
-# from .source_wkpd import WikiSource
+from .source_wkpd import WikiSource
 
 
 def all_sources():
     return (
         # SourceTourinsoft(),
         # SourceWeather(),
-        # WikiSource(),
+        WikiSource(),
     )
 
 # def source_class_check(cls):

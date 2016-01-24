@@ -17,7 +17,7 @@ def get_wikipedia_data(thing):
 
     """
 
-    article_titles = wikipedia.search(thing, results=5)
+    article_titles = wikipedia.search(thing, results=1)
 #    Do a Wikipedia search for query.
 #
 #    Keyword arguments:
@@ -95,7 +95,9 @@ def get_wikipedia_article_info(article_title, sentences=4):
 
     article_attributes = dict()
     try:
-        article_attributes[FIELD_COORDINATES]  = round_this_now(page.coordinates)
+        lat, lon = round_this_now(page.coordinates)
+        article_attributes[FIELD_LATITUDE]  = lat
+        article_attributes[FIELD_LONGITUDE] = lon
     except:
         pass
     article_attributes[FIELD_DESCRIPTION] = wikipedia.summary(article_title,
