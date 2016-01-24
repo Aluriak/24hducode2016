@@ -34,12 +34,6 @@ def flatten_dictionary(dictionary):
     return(flattenedDictionary)
 
 
-def replace_keys(data_dict):
-    """Return a data_dict, equivalent to given one, but with normalized
-    keys and values"""
-    return data_dict  # TODO
-
-
 def request(collection='Objects', parameters=dict(), metadata=True,
             event=True):
     """

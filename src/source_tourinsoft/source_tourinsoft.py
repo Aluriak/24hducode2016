@@ -5,7 +5,8 @@ Inherits from the SOURCE global class
 
 """
 from src.source import Source
-from .request_data import request_events, request_places, normalized_keys
+from .request_data import request_events, request_places
+from .normalization import normalized_keys
 
 
 class SourceTourinsoft(Source):
