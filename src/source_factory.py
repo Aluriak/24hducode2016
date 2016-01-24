@@ -13,13 +13,13 @@ from .info    import PACKAGE_NAME, PACKAGE_VERSION
 from .default import SUBMODULES_SOURCES_PREFIX
 from .source  import Source
 
-from .source_tourinsoft import SourceTourinsoft
+# from .source_tourinsoft import SourceTourinsoft
 from .source_weather import SourceWeather
 
 
 def all_sources():
     return (
-        SourceTourinsoft(),
+        # SourceTourinsoft(),
         SourceWeather(),
     )
 

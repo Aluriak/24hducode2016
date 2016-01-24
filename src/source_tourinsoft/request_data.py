@@ -5,11 +5,17 @@ Request outputs JSON which is converted to a dictionary.
 
 import requests
 
+
 URL = 'http://wcf.tourinsoft.com/Syndication/3.0/cdt72/'
-
 EVENT_URL = 'e9a8e2bf-c933-4831-9ebb-87eec559a21a/'
-
 PLACES_URL = '969e24f9-75a2-4cc6-a46c-db1f6ebbfe97/'
+
+
+# shortcuts
+def request_places():
+    return request(event=False)
+def request_events():
+    return request(event=True)
 
 
 def flatten_dictionary(dictionary):
@@ -26,6 +32,12 @@ def flatten_dictionary(dictionary):
             flattenedDictionary[key] = value
 
     return(flattenedDictionary)
+
+
+def replace_keys(data_dict):
+    """Return a data_dict, equivalent to given one, but with normalized
+    keys and values"""
+    return data_dict  # TODO
 
 
 def request(collection='Objects', parameters=dict(), metadata=True,
