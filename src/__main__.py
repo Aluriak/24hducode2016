@@ -1,9 +1,18 @@
 """
 Entry point for the project.
 
+usage:
+    __main__.py [options]
+
+options:
+    --longitude=STRING      Longitude, as string
+    --latitude=STRING       Latitude, as string
+
 """
 import sys
 import pickle
+from docopt import docopt
+from collections import namedtuple
 
 from . import default
 from . import tobject_factory
@@ -36,6 +45,13 @@ def gen_tobjects():
             pickle.dump(tobjects, fd)
             pickle.dump(TObject.sources, fd)
     return tobjects
+
+
+# User definition
+Position = namedtuple('User', ['latitude', 'longitude'])
+args = docopt(__doc__)
+user = Position(args['--latitude'], args['--longitude'])
+
 
 # use tobjects here
 tobjects = gen_tobjects()
