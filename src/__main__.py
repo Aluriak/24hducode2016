@@ -62,69 +62,67 @@ if user.longitude is None:
 
 # use tobjects here
 tobjects = gen_tobjects()
-<<<<<<< HEAD
 # from src.visualisation import format_types_data as fca
 # fca.lattice(tobjects)
 # print('##########################')
 # print(tobjects[0])
 # exit()
-l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
 
-make_map.make_map(l)
-=======
 
 def pretiffy(string, wordsize=12):
     return ' '.join(
         ('\n'+word) if idx % wordsize == 0 else word
         for idx, word in enumerate(string.split())
     )
-#print('##########################')
-#print(tobjects[0]['description'])
-for i, tobject in enumerate((o for o in tobjects if default.FIELD_LATITUDE in o)):
-    #print(tobject)
-    lat1, lon1 = tobject[default.FIELD_LATITUDE], tobject[default.FIELD_LONGITUDE]
-    if distance_gps((float(lon1), float(lat1)), (user.longitude, user.latitude)) < 10:
-#        print(tobject[default.FIELD_DESCRIPTION])
-        print('')
-#        print(tobject)
 
 
-        # make a blank image for the text, initialized to transparent text color
-        # width, height
-        txt = Image.new('RGBA', (900, 300), (255,255,255,255))
+def gen_wanteds(tobjects):
+    filtereds = (o for o in tobjects if default.FIELD_LATITUDE in o)
+    for i, tobject in enumerate(filtereds):
+        lat1 = tobject[default.FIELD_LATITUDE]
+        lon1 = tobject[default.FIELD_LONGITUDE]
+        if distance_gps((float(lon1), float(lat1)),
+                        (user.longitude, user.latitude)) < 10:
+            yield tobject
 
-        # get a font
-        fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 15)
-        # get a drawing context
-        d = ImageDraw.Draw(txt)
+keepeds = []
 
-        # draw text, half opacity
+for i, tobject in enumerate(gen_wanteds()):
+    keepeds.append(tobject)
+    # make a blank image for the text, initialized
+    # to transparent text color
+    # width, height
+    txt = Image.new('RGBA', (900, 300), (255,255,255,255))
+
+    # get a font
+    fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 15)
+    # get a drawing context
+    d = ImageDraw.Draw(txt)
+
+    # draw text, half opacity
 #        d.text((10,10), "Hello", font=fnt, fill=(255,255,255,128))
-        # draw text, full opacity
-        try:
-            d.text((10,40), tobject['object_name'], font=fnt, fill=(0,0,0,255))
-        except:
-            pass
-        try:
-            d.text((10,60), tobject['city'], font=fnt, fill=(0,0,0,255))
-        except:
-            pass
-        try:
-            d.text((10,80), tobject['url'], font=fnt, fill=(0,0,0,255))
-        except:
-            pass
-        try:
-            d.text((10,100), pretiffy(tobject['description']), font=fnt, fill=(0,0,0,255))
-        except:
-            pass
+    # draw text, full opacity
+    try:
+        d.text((10,40), tobject['object_name'], font=fnt, fill=(0,0,0,255))
+    except:
+        pass
+    try:
+        d.text((10,60), tobject['city'], font=fnt, fill=(0,0,0,255))
+    except:
+        pass
+    try:
+        d.text((10,80), tobject['url'], font=fnt, fill=(0,0,0,255))
+    except:
+        pass
+    try:
+        d.text((10,100), pretiffy(tobject['description']), font=fnt, fill=(0,0,0,255))
+    except:
+        pass
 
-        txt.save('/var/www/html/24h/tmp/result_' + str(i) + ".png", format="png")
-
-
+    txt.save('/var/www/html/24h/tmp/result_' + str(i) + ".png", format="png")
 
 
-# l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
 
-# make_map.make_map(l)
 
->>>>>>> cddc6fcc42eb3fbf06cf440123e3f4953c635bd4
+
+make_map.make_map(keepeds)
