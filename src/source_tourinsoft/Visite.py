@@ -1,25 +1,26 @@
 # bool(v)
-from getDataFromTourinSoft import request
+from request_data import request
 from collections import Counter
 
 
-def gen_key(property):
-    for tobject in request(event=False):
+def gen_key(property, event=False):
+    for tobject in request(event=event):
         for key, value in tobject.items():
             if key.lower().startswith(property):
                 yield key
 
 
-def gen_value(property):
-    for tobject in request(event=False):
+def gen_value(property, event=False):
+    property = property.lower()
+    for tobject in request(event=event):
         for key, value in tobject.items():
             if key.lower().startswith(property):
                 yield value
 
 
-def gen_value_compare(property1, property2):
+def gen_value_compare(property1, property2, event=False):
     same, diff = (0, 0)
-    for tobject in request(event=False):
+    for tobject in request(event=event):
         f = 0
         for key, value in tobject.items():
             if key.lower().startswith(property1):
@@ -32,7 +33,7 @@ def gen_value_compare(property1, property2):
             diff += 1
     return(same, diff)
 
-print(Counter(gen_value('type')))
+print(Counter(gen_value("type", event=False)))
 # print(gen_value_compare('syndicobjectname', 'nomoffre'))
 
 

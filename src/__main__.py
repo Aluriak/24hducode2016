@@ -19,6 +19,7 @@ from . import tobject_factory
 from . import source_factory
 from . import source_tourinsoft
 from .tobject import TObject
+from .visualisation import make_map
 
 
 def tobjects_from_sources():
@@ -56,5 +57,9 @@ user = Position(args['--latitude'], args['--longitude'])
 
 # use tobjects here
 tobjects = gen_tobjects()
-print('##########################')
-print(tobjects[0]['description'])
+# print('##########################')
+# print(tobjects[0])
+# exit()
+# l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
+
+# make_map.make_map(l)
