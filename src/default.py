@@ -14,6 +14,7 @@ FIELD_WEATHER_PREDICTED = 'WeatherPredicted'  # dict {day number:{weaver data}}
 FIELD_DATE = 'EventDate'  # datetime object
 
 # Following fields are found in Events and Places
+FIELD_ID = 'object_id'  # String
 FIELD_NAME = 'object_name'  # String
 FIELD_TYPE = 'type'  # String
 FIELD_UPDATED = 'updated'  # Date
