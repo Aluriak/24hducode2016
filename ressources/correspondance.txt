@@ -1,0 +1,11 @@
+
+FIELD_ID = SyndicObjectID
+FIELD_NAME = SyndicObjectName
+FIELD_TYPE = ObjectTypeName
+FIELD_UPDATED = Updated 
+FIELD_LATITUDE = GmapLatitude
+FIELD_LONGITUDE = GmapLongitude
+FIELD_CITY = Commune
+FIELD_ZIPCODE = CodePostal
+FIELD_OPENING = OuvertureGranule
+FIELD_FREE = TarifGratuit

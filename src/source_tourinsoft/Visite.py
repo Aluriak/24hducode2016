@@ -32,7 +32,7 @@ def gen_value_compare(property1, property2):
             diff += 1
     return(same, diff)
 
-print(Counter(gen_value('ascprestation')))
+print(Counter(gen_value('type')))
 # print(gen_value_compare('syndicobjectname', 'nomoffre'))
 
 
