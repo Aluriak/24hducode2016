@@ -6,20 +6,8 @@ Define also a method that turn a dict with turinsoft keys into
 a dict of normalized keys.
 
 """
-from functools import partial
-from datetime import datetime
 from src import default
 from .timetable_parser import parsed_time_table
-
-
-# Types definition
-TOURINFO_DATE_FORMAT = '%Y-%m-%dT%H:%M:%S'
-def date_type_wrapped(string, format):
-    """Wrapper around datetime, allowing usage of keywords arguments"""
-    if '.' in string:
-        string = string.split('.')[0]
-    return datetime.strptime(string, format)
-date_type = partial(date_type_wrapped, format=TOURINFO_DATE_FORMAT)
 
 
 # Dirty keys: (normalized key, type converter)
@@ -27,7 +15,7 @@ KEYS_ASSOCIATION = {
     'SyndicObjectID'   : (default.FIELD_ID, str),
     'SyndicObjectName' : (default.FIELD_NAME, str),
     'ObjectTypeName'   : (default.FIELD_TYPE, str),
-    'Updated'          : (default.FIELD_UPDATED, date_type),
+    'Updated'          : (default.FIELD_UPDATED, default.date_type),
     'GmapLatitude'     : (default.FIELD_LATITUDE, str),
     'GmapLongitude'    : (default.FIELD_LONGITUDE, str),
     'Commune'          : (default.FIELD_CITY, str),

@@ -55,10 +55,8 @@ def request(collection='Objects', filters=dict(), metadata=True,
                         '?$format=json',
                          ''.join(filters_str),
                          '&metadata' if metadata else ''))
-    print(url)
     # Values field contains a list of all objects (other fields are useless)
     # Flatten dictionary formats nested dictionaries (see module parser)
-    print(requests.get(url).text)
     jsonOutput = requests.get(url).json()['value']
     return tuple(flatten_dictionary(tobject) for tobject in jsonOutput)
 

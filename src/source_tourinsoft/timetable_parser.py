@@ -53,6 +53,7 @@ def _raw_time_table_parser(timeTable):
         openingTimes.append(temp.group(3).split('||'))
     return (timePeriods, openingTimes)
 
+
 def parsed_time_table(rawTimeTable):
     parsedTimeTable = _raw_time_table_parser(rawTimeTable)
     return tuple(timePeriod(period=period, times=times)

@@ -3,6 +3,8 @@ Definitions of default values.
 
 """
 
+from datetime import datetime
+from functools import partial
 
 # CONSTANTS
 SUBMODULES_SOURCES_PREFIX = 'sources_'
@@ -33,3 +35,15 @@ FIELD_EVENT = 'event'  # Boolean True if Event, False if Place
 # Fields for Peter
 FIELD_DESCRIPTION = 'description'
 FIELD_URL = 'url'
+
+# Types definition
+TOURINFO_DATE_FORMAT = '%Y-%m-%dT%H:%M:%S'
+
+
+def date_type_wrapped(string, format):
+    """Wrapper around datetime, allowing usage of keywords arguments"""
+    if '.' in string:
+        string = string.split('.')[0]
+    return datetime.strptime(string, format)
+
+date_type = partial(date_type_wrapped, format=TOURINFO_DATE_FORMAT)
