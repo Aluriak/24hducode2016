@@ -9,6 +9,7 @@ from . import default
 from . import tobject_factory
 from . import source_factory
 from . import source_tourinsoft
+from .tobject import TObject
 
 
 def tobjects_from_sources():
