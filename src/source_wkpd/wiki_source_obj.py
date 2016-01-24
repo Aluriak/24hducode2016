@@ -19,11 +19,12 @@ class WikiSource(Source):
         data_dict['linked_elems'] = list()
         
         # Update data according to GPS coords
-        if FIELD_COORDINATES in data_dict:
+        if FIELD_LATITUDE in data_dict:
 
-            print("Processing:", FIELD_COORDINATES)
+            print("Processing: Coordinates")
             data_dict['linked_elems'] += wkp.get_wikipedia_data_near_coords(
-                                            *data_dict[FIELD_COORDINATES]
+                                            data_dict[FIELD_LATITUDE],
+                                            data_dict[FIELD_LONGITUDE]
                                          )
             print(data_dict['linked_elems'])
 

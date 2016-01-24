@@ -13,15 +13,15 @@ from . import source_tourinsoft
 
 def tobjects_from_sources():
     print('Init Sources factory…', end='') ; sys.stdout.flush()
-    sources = source_factory.all_sources()
+    sources = tuple(source_factory.all_sources())
     print('OK !\nInit TObjects factory…', end='') ; sys.stdout.flush()
     tobjects_factory = tobject_factory.TObjectFactory(sources)
     print('OK !\nRequest JSON data…', end='') ; sys.stdout.flush()
-    json = source_tourinsoft.SourceTourinsoft().spawn_all()
+    init_data = source_tourinsoft.SourceTourinsoft().spawn_all()
     print('OK !\nProduce TObjects…', end='') ; sys.stdout.flush()
-    tobjects = tobjects_factory.tobjects(json)
+    tobjects = tuple(tobjects_factory.tobjects(init_data))
     print('OK !')
-    return tobjects
+    return tuple(tobjects)
 
 def gen_tobjects():
     """Get cached data in default.ALL_DATA_FILE file, or generate it"""
@@ -38,4 +38,4 @@ def gen_tobjects():
 # use tobjects here
 tobjects = gen_tobjects()
 print('##########################')
-print(tobjects[0])
+print(tobjects[0]['description'])
