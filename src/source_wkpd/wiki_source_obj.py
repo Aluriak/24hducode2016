@@ -19,17 +19,17 @@ class WikiSource(Source):
         data_dict['linked_elems'] = list()
         
         # Update data according to GPS coords
-        if FIELD_LATITUDE in data_dict:
-
-            print("Processing: Coordinates")
-            data_dict['linked_elems'] += wkp.get_wikipedia_data_near_coords(
-                                            data_dict[FIELD_LATITUDE],
-                                            data_dict[FIELD_LONGITUDE]
-                                         )
-            print(data_dict['linked_elems'])
-
-            [self.funny_keys.update(elem.keys()) for elem 
-                in data_dict['linked_elems']]
+#        if FIELD_LATITUDE in data_dict:
+#
+#            print("Processing: Coordinates")
+#            data_dict['linked_elems'] += wkp.get_wikipedia_data_near_coords(
+#                                            data_dict[FIELD_LATITUDE],
+#                                            data_dict[FIELD_LONGITUDE]
+#                                         )
+#            print(data_dict['linked_elems'])
+#
+#            [self.funny_keys.update(elem.keys()) for elem 
+#                in data_dict['linked_elems']]
 
         # Update data according to a SyndicObjectName
         if FIELD_NAME in data_dict:
@@ -47,7 +47,7 @@ class WikiSource(Source):
         return data_dict
 
     def keywords(self):
-        return self.funny_keys
+        return {FIELD_URL, FIELD_DESCRIPTION}
 
 if __name__ == "__main__":
     
