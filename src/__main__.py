@@ -29,8 +29,10 @@ try:
         tobjects = pickle.load(fd)
 except IOError:
     print('No file ' + default.ALL_DATA_FILE + ' found. Data will be generated from databases')
-    tobjects = tuple(tobjects)
+    tobjects = tuple(gen_tobjects())
     with open(default.ALL_DATA_FILE, 'wb') as fd:
         pickle.dump(tobjects, fd)
 
 # use tobjects here
+print('##########################')
+print(tobjects[0])
