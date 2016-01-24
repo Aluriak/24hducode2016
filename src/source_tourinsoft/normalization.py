@@ -46,7 +46,10 @@ def normalized_keys(data_dict, isevent):
         value = data_dict.get(unkey, None)
         if value:
             # print('INLOOP:', type_conv, data_dict[unkey])
-            # print('INLOOP:', type_conv(data_dict[unkey]))
-            norm_data[normkey] = type_conv(value)
-            print(norm_data[normkey])
+            try:
+                # print('INLOOP:', type_conv(data_dict[unkey]))
+                norm_data[normkey] = type_conv(value)
+                # print(norm_data[normkey])
+            except AttributeError:
+                pass
     return norm_data
