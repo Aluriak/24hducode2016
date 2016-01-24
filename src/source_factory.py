@@ -15,12 +15,14 @@ from .source  import Source
 
 # from .source_tourinsoft import SourceTourinsoft
 from .source_weather import SourceWeather
+from .source_wkpd import WikiSource
 
 
 def all_sources():
     return (
         # SourceTourinsoft(),
-        SourceWeather(),
+        # SourceWeather(),
+        # WikiSource(),
     )
 
 # def source_class_check(cls):

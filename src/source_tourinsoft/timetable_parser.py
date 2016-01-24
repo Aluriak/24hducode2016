@@ -39,28 +39,22 @@ class timePeriod():
                        times[26], times[27])
 
 
-class TimeTableParser():
-    """
-    Class parsing shitty input from granule into a list of time periods
-    """
+def _raw_time_table_parser(timeTable):
+    """Get a formatted string, outputs a complex object"""
+    timePeriods = []
+    openingTimes = []
+    # Separates time periods
+    splitPeriods = (x for x in timeTable.split('##'))
+    # Parse each time period
+    for period in splitPeriods:
+        temp = re.search(r, period)  # Regex see top of file
+        timePeriods.append((temp.group(1), temp.group(2)))
+        # Days separated by ||
+        openingTimes.append(temp.group(3).split('||'))
+    return (timePeriods, openingTimes)
 
-    @staticmethod
-    def parseRawTimeTable(timeTable):
-        timePeriods = []
-        openingTimes = []
-        # Separates time periods
-        splitPeriods = (x for x in timeTable.split('##'))
-        # Parse each time period
-        for period in splitPeriods:
-            temp = re.search(r, period)  # Regex see top of file
-            timePeriods.append((temp.group(1), temp.group(2)))
-            # Days separated by ||
-            openingTimes.append(temp.group(3).split('||'))
-
-        return([timePeriods, openingTimes])
-
-    def __init__(self, rawTimeTable):
-        parsedTimeTable = TimeTableParser.parseRawTimeTable(rawTimeTable)
-        self.timePeriods = [timePeriod(period=period, times=times)
-                            for period, times
-                            in zip(parsedTimeTable[0], parsedTimeTable[1])]
+def parsed_time_table(rawTimeTable):
+    parsedTimeTable = _raw_time_table_parser(rawTimeTable)
+    return tuple(timePeriod(period=period, times=times)
+                 for period, times
+                 in zip(parsedTimeTable[0], parsedTimeTable[1]))
