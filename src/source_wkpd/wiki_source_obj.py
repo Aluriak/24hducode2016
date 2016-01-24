@@ -47,7 +47,7 @@ class WikiSource(Source):
         return data_dict
 
     def keywords(self):
-        return self.funny_keys
+        return {FIELD_LATITUDE, FIELD_URL, FIELD_DESCRIPTION, FIELD_NAME, FIELD_LONGITUDE}
 
 if __name__ == "__main__":
     
