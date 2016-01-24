@@ -30,8 +30,7 @@ def flatten_dictionary(dictionary):
                 flattenedDictionary[key + '.' + subkey] = subvalue
         else:
             flattenedDictionary[key] = value
-
-    return(flattenedDictionary)
+    return flattenedDictionary
 
 
 def request(collection='Objects', parameters=dict(), metadata=True,
