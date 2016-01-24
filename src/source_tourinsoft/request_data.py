@@ -14,6 +14,8 @@ PLACES_URL = '969e24f9-75a2-4cc6-a46c-db1f6ebbfe97/'
 # shortcuts
 def request_places():
     return request(event=False)
+
+
 def request_events():
     return request(event=True)
 
@@ -33,7 +35,7 @@ def flatten_dictionary(dictionary):
     return flattenedDictionary
 
 
-def request(collection='Objects', parameters=dict(), metadata=True,
+def request(collection='Objects', filters=dict(), metadata=True,
             event=True):
     """
     General request function.
@@ -46,16 +48,20 @@ def request(collection='Objects', parameters=dict(), metadata=True,
     Output: a tuple of dictionaries (one dictionary for one object) containing
     the properties of each object.
     """
-    param_str = ('&' + par + '=' + parameters[par] for par in parameters)
+    filters_str = ('&$filter=' + key + " eq '" + value + "'"
+                   for key, value in filters.items())
     url = URL + ''.join((EVENT_URL if event else PLACES_URL,
                         collection,
                         '?$format=json',
-                         ''.join(param_str),
+                         ''.join(filters_str),
                          '&metadata' if metadata else ''))
+    print(url)
     # Values field contains a list of all objects (other fields are useless)
     # Flatten dictionary formats nested dictionaries (see module parser)
+    print(requests.get(url).text)
     jsonOutput = requests.get(url).json()['value']
     return tuple(flatten_dictionary(tobject) for tobject in jsonOutput)
 
 # Usage example
-# test = request()
+# test = request(filters={"Commune": "LE MANS"}, metadata=False)
+
