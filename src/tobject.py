@@ -22,5 +22,8 @@ class TObject:
                     break
         return self.data[key]
 
+    def __contains__(self, item):
+        return item in self.data
+
     def __str__(self):
         return str(self.data)
