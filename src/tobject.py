@@ -16,7 +16,7 @@ class TObject:
     def __getitem__(self, key):
         if key not in self.data:
             for source in TObject.sources:
-                if key in source.keywords:
+                if key in source.keywords():
                     source.enrichment(self.data)
                 if key in self.data:
                     break
