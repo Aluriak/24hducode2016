@@ -17,7 +17,7 @@ class SourceWeather(Source):
         if default.FIELD_LATITUDE in data_dict:
             lat = data_dict[default.FIELD_LATITUDE]
             lon = data_dict[default.FIELD_LONGITUDE]
-            data_dict[default.FIELD_WEATHER] = weather.actual(lat, lon)
+            data_dict[default.FIELD_WEATHER_NOW] = weather.actual(lat, lon)
         if default.FIELD_DATE in data_dict:
             date = data_dict[default.FIELD_DATE]
             if weather.is_predictable(date):
