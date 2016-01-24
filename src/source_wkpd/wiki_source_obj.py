@@ -16,7 +16,7 @@ class WikiSource(Source):
     def enrichment(self, data_dict):
         
         # Initialize linked_elems
-        data_dict['linked_elems'] = list()
+        # data_dict['linked_elems'] = list()
         
         # Update data according to GPS coords
 #        if FIELD_LATITUDE in data_dict:
@@ -34,15 +34,16 @@ class WikiSource(Source):
         # Update data according to a SyndicObjectName
         if FIELD_NAME in data_dict:
             
-            print("Processing:", FIELD_NAME)
-            data_dict['linked_elems'] += wkp.get_wikipedia_data(
-                                            data_dict[FIELD_NAME]
-                                         )
+            # print("Processing:", FIELD_NAME)
+            payload = wkp.get_wikipedia_data(data_dict[FIELD_NAME])[0]
+            # print('PAYLOAD:', payload.__class__, payload)
+            data_dict[FIELD_DESCRIPTION] = payload[FIELD_DESCRIPTION]
+            data_dict[FIELD_URL] = payload[FIELD_URL]
 
-            [self.funny_keys.update(elem.keys()) for elem 
-                in data_dict['linked_elems']]
+            # [self.funny_keys.update(elem.keys()) for elem 
+                # in data_dict['linked_elems']]
         
-        print("RETURNED KEYS", self.funny_keys)
+        # print("RETURNED KEYS", self.funny_keys)
         
         return data_dict
 
