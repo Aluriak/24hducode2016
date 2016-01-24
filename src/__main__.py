@@ -14,12 +14,14 @@ import pickle
 from docopt import docopt
 from collections import namedtuple
 from src.visualisation.distance import distance_gps
+import PIL # pip install pillow
 
 from . import default
 from . import tobject_factory
 from . import source_factory
 from . import source_tourinsoft
 from .tobject import TObject
+from .visualisation import make_map
 
 
 def tobjects_from_sources():
@@ -60,11 +62,20 @@ if user.longitude is None:
 
 # use tobjects here
 tobjects = gen_tobjects()
-print('##########################')
-print(tobjects[0]['description'])
+
+#print('##########################')
+#print(tobjects[0]['description'])
 for tobject in (o for o in tobjects if default.FIELD_LATITUDE in o):
     #print(tobject)
     lat1, lon1 = tobject[default.FIELD_LATITUDE], tobject[default.FIELD_LONGITUDE]
     if distance_gps((float(lon1), float(lat1)), (user.longitude, user.latitude)) < 10:
         tobject[default.FIELD_DESCRIPTION]
-        print(tobject)
+#        print(tobject)
+        
+        
+
+
+# l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
+
+# make_map.make_map(l)
+

@@ -2,18 +2,14 @@
 Get text to put in little bubbles from the TObject container
 """
 
-from tobject import TObject
-import default
+from src import default
 
 
-def get_information_from_tobject(tobject):
-    """
-    Get useful information from one TObject
-    """
-    return {'latitude': tobject[default.FIELD_LATITUDE],
-            'longitude': tobject[default.FIELD_LONGITUDE],
-            'eventName': tobject[default.FIELD_NAME],
-            }
+def pretiffy(string, wordsize=10):
+    return ' '.join(
+        ('\n'+word) if idx % wordsize == 0 else word
+        for idx, word in enumerate(string.split())
+    )
 
 
 def generate_lists_for_map(objectsList):
@@ -21,8 +17,8 @@ def generate_lists_for_map(objectsList):
     longitudes = []
     text = []
     for tobject in objectsList:
-        temp = get_information_from_tobject(tobject)
-        latitudes.append(temp['latitude'])
-        longitudes.append(temp['longitude'])
-        text.append(temp['eventName'] + '\n')
+        latitudes.append(tobject[default.FIELD_LATITUDE])
+        longitudes.append(tobject[default.FIELD_LONGITUDE])
+        text.append(tobject[default.FIELD_NAME] + '\n' +
+                    pretiffy(tobject[default.FIELD_DESCRIPTION]))
     return [latitudes, longitudes, text]
