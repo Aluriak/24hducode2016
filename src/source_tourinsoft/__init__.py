@@ -1,4 +1,3 @@
-from .getDataFromTourinSoft import request
 from .source_tourinsoft import SourceTourinsoft
 
 

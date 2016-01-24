@@ -5,13 +5,13 @@ Inherits from the SOURCE global class
 
 """
 # from src.source import Source
+from .request_data import request
 
 
-class SourceTourinsoft():
+class SourceTourinsoft(Source):
 
-    def enrichment(self, data_dict):
-        data_dict[self.key] = self.value
-        return data_dict
+    def spawn_all(self):
+        return request()
 
     def keywords(self):
         return {self.key}
