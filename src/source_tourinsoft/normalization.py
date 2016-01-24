@@ -9,6 +9,7 @@ a dict of normalized keys.
 from functools import partial
 from datetime import datetime
 from src import default
+from .timetable_parser import parsed_time_table
 
 
 # Types definition
@@ -31,7 +32,7 @@ KEYS_ASSOCIATION = {
     'GmapLongitude'    : (default.FIELD_LONGITUDE, str),
     'Commune'          : (default.FIELD_CITY, str),
     'CodePostal'       : (default.FIELD_ZIPCODE, int),
-    'OuvertureGranule' : (default.FIELD_OPENING, str),
+    'OuvertureGranule' : (default.FIELD_OPENING, parsed_time_table),
     'TarifGratuit'     : (default.FIELD_FREE, bool),
 }
 
