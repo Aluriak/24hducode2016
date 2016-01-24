@@ -78,7 +78,7 @@ for i, tobject in enumerate((o for o in tobjects if default.FIELD_LATITUDE in o)
         print('')
 #        print(tobject)
 
-        
+
         # make a blank image for the text, initialized to transparent text color
         # width, height
         txt = Image.new('RGBA', (900, 300), (255,255,255,255))
@@ -107,10 +107,10 @@ for i, tobject in enumerate((o for o in tobjects if default.FIELD_LATITUDE in o)
             d.text((10,100), pretiffy(tobject['description']), font=fnt, fill=(0,0,0,255))
         except:
             pass
-        
+
         txt.save('/var/www/html/24h/tmp/result_' + str(i) + ".png", format="png")
-        
-        
+
+
 
 
 # l = [tobjects[0], tobjects[1], tobjects[2], tobjects[3], tobjects[4]]
