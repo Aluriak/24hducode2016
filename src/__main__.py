@@ -14,7 +14,7 @@ import pickle
 from docopt import docopt
 from collections import namedtuple
 from src.visualisation.distance import distance_gps
-import PIL # pip install pillow
+from PIL import Image, ImageDraw, ImageFont # pip install pillow
 
 from . import default
 from . import tobject_factory
@@ -63,14 +63,43 @@ if user.longitude is None:
 # use tobjects here
 tobjects = gen_tobjects()
 
+def pretiffy(string, wordsize=12):
+    return ' '.join(
+        ('\n'+word) if idx % wordsize == 0 else word
+        for idx, word in enumerate(string.split())
+    )
 #print('##########################')
 #print(tobjects[0]['description'])
-for tobject in (o for o in tobjects if default.FIELD_LATITUDE in o):
+for i, tobject in enumerate((o for o in tobjects if default.FIELD_LATITUDE in o)):
     #print(tobject)
     lat1, lon1 = tobject[default.FIELD_LATITUDE], tobject[default.FIELD_LONGITUDE]
     if distance_gps((float(lon1), float(lat1)), (user.longitude, user.latitude)) < 10:
-        tobject[default.FIELD_DESCRIPTION]
+#        print(tobject[default.FIELD_DESCRIPTION])
+        print('')
 #        print(tobject)
+
+        
+        # make a blank image for the text, initialized to transparent text color
+        # width, height
+        txt = Image.new('RGBA', (900, 300), (255,255,255,255))
+
+        # get a font
+        fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 15)
+        # get a drawing context
+        d = ImageDraw.Draw(txt)
+
+        # draw text, half opacity
+#        d.text((10,10), "Hello", font=fnt, fill=(255,255,255,128))
+        # draw text, full opacity
+        d.text((10,40), tobject['object_name'], font=fnt, fill=(0,0,0,255))
+        d.text((10,60), tobject['city'], font=fnt, fill=(0,0,0,255))
+        d.text((10,80), tobject['url'], font=fnt, fill=(0,0,0,255))
+        
+        
+        d.text((10,100), pretiffy(tobject['description']), font=fnt, fill=(0,0,0,255))
+#        d.text((10,120), tobject[''], font=fnt, fill=(0,0,0,255))
+        
+        txt.save('/var/www/html/24h/tmp/result_' + str(i) + ".png", format="png")
         
         
 
