@@ -1,6 +1,6 @@
 """
 Wikipédia interrogation
-
+https://wikipedia.readthedocs.org/en/latest/code.html
 """
 
 # Custom imports
@@ -17,7 +17,7 @@ def get_wikipedia_data(thing):
 
     """
 
-    article_titles = wikipedia.search(thing)
+    article_titles = wikipedia.search(thing, results=5)
 #    Do a Wikipedia search for query.
 #
 #    Keyword arguments:
@@ -108,7 +108,7 @@ def get_wikipedia_article_info(article_title, sentences=4):
 #    print("pageid:", page.pageid)
 #    print("url:", get_wikipedia_url_with_pageid(page.pageid))
 
-    print(article_attributes)
+#    print(article_attributes)
 
     return article_attributes
 
@@ -129,7 +129,7 @@ def get_wikipedia_url_with_pageid(pageid):
             URL.format(pageid)
         ).json()["query"]["pages"][str(pageid)]["canonicalurl"]
     except:
-        print("NO URL !")
+#        print("NO URL !")
         return ""
 
 
